@@ -7,11 +7,15 @@ var mouseDrag = function(canvas, context, pen, pressed){
   }
 }
 
-var buttonPress = function(button, size, context, pen){
+var changeSize = function(size, pen){
   pen.changeRadius(size);
 }
 
-var buttonChangePenShape = function(button, shape, context, pen){
+var changeColour = function(context, colour){
+  context.fillStyle = colour;
+}
+
+var buttonChangePenShape = function(shape, pen){
   pen.changeShape(shape);
 }
 
@@ -59,30 +63,60 @@ window.onload = function(){
   var buttonTen = buttonCreate("50px");
   var buttonSquare = buttonCreate("Square");
   var buttonCircle = buttonCreate("Circle");
+  var buttonBlue = buttonCreate("Blue");
+  var buttonGreen = buttonCreate("Green");
+  var buttonBlack = buttonCreate("Black");
+  var buttonRed = buttonCreate("Red");
+  var buttonPurple = buttonCreate("Purple");
   buttonToPage(buttonOne);
   buttonToPage(buttonFive);
   buttonToPage(buttonTen);
   buttonToPage(buttonSquare);
   buttonToPage(buttonCircle);
+  buttonToPage(buttonGreen);
+  buttonToPage(buttonBlue);
+  buttonToPage(buttonBlack);
+  buttonToPage(buttonRed);
+  buttonToPage(buttonPurple);
 
   buttonOne.onclick = function(event){
-    buttonPress(buttonOne, 10, context, pen);
+    changeSize(10, pen);
   }
 
   buttonFive.onclick = function(event){
-    buttonPress(buttonOne, 20, context, pen);
+    changeSize(20, pen);
   }
 
   buttonTen.onclick = function(event){
-    buttonPress(buttonOne, 50, context, pen);
+    changeSize(50, pen);
   }
 
   buttonSquare.onclick = function(event){
-    buttonChangePenShape(buttonSquare, "square", context, pen);
+    buttonChangePenShape("square", pen);
   }
 
   buttonCircle.onclick = function(event){
-    buttonChangePenShape(buttonCircle, "circle", context, pen);
+    buttonChangePenShape("circle", pen);
+  }
+
+  buttonGreen.onclick = function(event){
+    changeColour(context, "green");
+  }
+
+  buttonRed.onclick = function(event){
+    changeColour(context, "tomato");
+  }
+
+  buttonBlue.onclick = function(event){
+    changeColour(context, "blue");
+  }
+
+  buttonBlack.onclick = function(event){
+    changeColour(context, "black");
+  }
+
+  buttonPurple.onclick = function(event){
+    changeColour(context, "purple");
   }
 
   window.addEventListener("keyup", function(event){
