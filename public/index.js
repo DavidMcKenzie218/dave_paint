@@ -11,6 +11,10 @@ var buttonPress = function(button, size, context, pen){
   pen.changeRadius(size);
 }
 
+var buttonChangePenShape = function(button, shape, context, pen){
+  pen.changeShape(shape);
+}
+
 var radius = function(size){
   var radius = size;
   return radius;
@@ -54,10 +58,12 @@ window.onload = function(){
   var buttonFive = buttonCreate("20px");
   var buttonTen = buttonCreate("50px");
   var buttonSquare = buttonCreate("Square");
+  var buttonCircle = buttonCreate("Circle");
   buttonToPage(buttonOne);
   buttonToPage(buttonFive);
   buttonToPage(buttonTen);
   buttonToPage(buttonSquare);
+  buttonToPage(buttonCircle);
 
   buttonOne.onclick = function(event){
     buttonPress(buttonOne, 10, context, pen);
@@ -72,7 +78,11 @@ window.onload = function(){
   }
 
   buttonSquare.onclick = function(event){
-    buttonChangePenShape(buttonSquare, context, pen);
+    buttonChangePenShape(buttonSquare, "square", context, pen);
+  }
+
+  buttonCircle.onclick = function(event){
+    buttonChangePenShape(buttonCircle, "circle", context, pen);
   }
 
   window.addEventListener("keyup", function(event){
