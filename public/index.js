@@ -29,7 +29,7 @@ var buttonToPage = function(button){
 
 var draw = function(event, context, pen){
     context.beginPath();
-    pen.drawFunction(context);
+    pen.draw(context);
     context.fill();
 }
 
@@ -48,14 +48,16 @@ window.onload = function(){
 
   var context = canvas.getContext("2d");
 
-  var pen = new Pen();
+  var pen = new Pen(context);
 
   var buttonOne = buttonCreate("10px");
   var buttonFive = buttonCreate("20px");
   var buttonTen = buttonCreate("50px");
+  var buttonSquare = buttonCreate("Square");
   buttonToPage(buttonOne);
   buttonToPage(buttonFive);
   buttonToPage(buttonTen);
+  buttonToPage(buttonSquare);
 
   buttonOne.onclick = function(event){
     buttonPress(buttonOne, 10, context, pen);
@@ -67,6 +69,10 @@ window.onload = function(){
 
   buttonTen.onclick = function(event){
     buttonPress(buttonOne, 50, context, pen);
+  }
+
+  buttonSquare.onclick = function(event){
+    buttonChangePenShape(buttonSquare, context, pen);
   }
 
   window.addEventListener("keyup", function(event){
